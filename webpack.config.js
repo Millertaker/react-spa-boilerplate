@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 var APP_DIR = path.resolve(__dirname, 'src');
 
@@ -36,7 +37,10 @@ var config = (env) => {
           { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
           { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
         ]
-      }
+      },
+       plugins: [
+        new UglifyJSPlugin()
+      ]
     };  
   }
 
