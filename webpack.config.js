@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugingit');
 
 var APP_DIR = path.resolve(__dirname, 'src');
 
