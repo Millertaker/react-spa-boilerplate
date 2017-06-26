@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "./node_modules/.bin/webpack -d",
-    "dev-server": "./node_modules/.bin/gulp"
+    "build-dev": "./node_modules/.bin/webpack --env.development",
+    "build-dev": "./node_modules/.bin/webpack --env.production",
+    "gulp": "./node_modules/.bin/gulp"
   },
   "author": "Miller Gonzalez",
   "license": "ISC",
@@ -21,7 +22,10 @@
     "require-dir": "^0.3.2",
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",
-    "webpack": "^3.0.0",
-    "webpack-stream": "^3.2.0"
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }

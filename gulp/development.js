@@ -10,18 +10,16 @@ var rimraf = require('rimraf');
 var webserver = require('gulp-webserver');
 var run = require('run-sequence');
 
-var webpack = require('webpack-stream');
-var webpackConfigDev = require('../webpack.config.dev.js');
-var webpackConfigProd = require('../webpack.config.prod.js');
+var webpackConfigDev = require('../webpack.config.js');
 
 gulp.task('clean', function(cb){
   rimraf('./public/js', cb);
 });
 
 gulp.task('traspile-scripts', function() {
-  return gulp.src('./src/**/*.js')
-    .pipe(webpack(webpackConfigDev))
-    .pipe(gulp.dest('./public/js'));
+  shell.task([
+    './node_modules/.bin/webpack --env.development'
+  ])
 });
 
 gulp.task('watch-fe', function(){
