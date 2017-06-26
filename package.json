@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "./node_modules/.bin/webpack --env.production",
-    "gulp": "./node_modules/.bin/gulp"
+    "development": "NODE_ENV=development ./node_modules/.bin/gulp",
+    "bundle": "NODE_ENV=production ./node_modules/.bin/gulp"
   },
   "author": "Miller Gonzalez",
   "license": "ISC",
