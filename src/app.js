@@ -1,13 +1,13 @@
 import React from 'React';
 
-const App = React.createClass({
+const AppMiller = React.createClass({
   render(){
     return (
       <div>
-        <h1> Hello world! </h1>
+        <h2>Hello world!</h2>
       </div>
     );
   }
 });
 
-export default App;
+export default AppMiller;

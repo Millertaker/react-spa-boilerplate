@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "development": "NODE_ENV=development ./node_modules/.bin/gulp",
-    "bundle": "NODE_ENV=production ./node_modules/.bin/gulp"
+    "serve": "NODE_ENV=development ./node_modules/.bin/gulp",
+    "bundle": "NODE_ENV=production ./node_modules/.bin/gulp",
+    "transpile-dev": "./node_modules/.bin/webpack --env.development",
+    "transpile-pub": "./node_modules/.bin/webpack --env.production"
   },
   "author": "Miller Gonzalez",
   "license": "ISC",
@@ -15,8 +17,8 @@
     "babel-loader": "^7.1.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "child_process": "^1.0.2",
     "gulp": "^3.9.1",
-    "gulp-shell": "^0.6.3",
     "gulp-webserver": "^0.9.1",
     "require-dir": "^0.3.2",
     "rimraf": "^2.6.1",
