@@ -20,9 +20,5 @@ gulp.task('traspile-pub-scripts', function() {
 });
 
 gulp.task('production', function(cb){
-  run('watch-fe', 'clean', 'less', 'traspile-pub-scripts', 'bundle-docs', 'webserver', cb);
-});
-
-gulp.task('production', function(cb){
   run('clean', 'traspile-pub-scripts', cb);
 });

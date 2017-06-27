@@ -21,11 +21,7 @@ gulp.task('traspile-dev-scripts', function() {
 });
 
 gulp.task('watch-fe', function(){
-  gulp.watch('./src/js/**/*.js', ['clean','traspile-dev-scripts']);
-});
-
-gulp.task('development', function(cb){
-  run('watch-fe', 'clean', 'less', 'traspile-dev-scripts', 'bundle-docs', 'webserver', cb);
+  gulp.watch('./src/**/*.js', ['clean','traspile-dev-scripts']);
 });
 
 gulp.task('webserver', function() {
@@ -38,5 +34,5 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('development', function(cb){
-  run('watch-fe', 'clean', 'traspile-dev-scripts', 'webserver', cb);
+  run('clean', 'watch-fe', 'traspile-dev-scripts', 'webserver', cb);
 });
