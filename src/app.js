@@ -1,6 +1,6 @@
 import React from 'React';
 
-const AppMiller = React.createClass({
+const App = React.createClass({
   render(){
     return (
       <div>
@@ -10,4 +10,4 @@ const AppMiller = React.createClass({
   }
 });
 
-export default AppMiller;
+export default App;
