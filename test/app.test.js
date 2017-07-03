@@ -1,16 +1,16 @@
+import React from 'react';
 import chai from 'chai';
-import {JSDOM} from 'jsdom';
+import {renderIntoDocument} from 'react-dom/test-utils';
+import App from '../src/components/App';
 
-describe('This is my bolierplate test', () => {
-  it('Should exists as object', () => {
 
-    let inputDOMMarkup = htmlMocks.textInput;
-    const dom = new JSDOM(`<!DOCTYPE html><body>${inputDOMMarkup}</body>`);
+describe('Test components/App Component', () => {
+  it('Should render', () => {
 
-    dom.window.document.DataGenerator = DataGenerator.getInstance();
-    let input = Input({selector: 'text-input-component-js', document: dom.window.document});
+     const item = renderIntoDocument(
+      <App />
+    );
 
-    assert.equal(typeof input,  'object', 'the returned value is a Object');
   });
 });
 
