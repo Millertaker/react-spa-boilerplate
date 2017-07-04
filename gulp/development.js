@@ -31,6 +31,7 @@ gulp.task('traspile-dev-scripts', function() {
 
 gulp.task('watch-fe', function(){
   gulp.watch('./src/**/*.js', ['clean','traspile-dev-scripts']);
+  gulp.watch('./less/**/*.less', ['clean-css', 'less']);
 });
 
 gulp.task('less', function(){
