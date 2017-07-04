@@ -4,12 +4,11 @@
   "description": "React basic boilerplate to create SPA",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ./test/mocks/setup.js ./test/**/*.test.js",
     "serve": "NODE_ENV=development ./node_modules/.bin/gulp",
     "bundle": "NODE_ENV=production ./node_modules/.bin/gulp",
     "transpile-dev": "./node_modules/.bin/webpack --env.development",
-    "transpile-pub": "./node_modules/.bin/webpack --env.production",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ./test/mocks/setup.js ./test/**/*.test.js"
+    "transpile-pub": "./node_modules/.bin/webpack --env.production"
   },
   "author": "Miller Gonzalez",
   "license": "ISC",
@@ -21,6 +20,10 @@
     "chai": "^4.0.2",
     "child_process": "^1.0.2",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "^3.3.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-uglifycss": "^1.0.8",
     "gulp-webserver": "^0.9.1",
     "jsdom": "^11.0.0",
     "mocha": "^3.4.2",
@@ -33,6 +36,7 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
