@@ -20,7 +20,18 @@ gulp.task('clean', function(cb){
 });
 
 gulp.task('run-test', function() {
-  exec('npm test');
+  exec('npm test', function(error, stdout, stderr) {
+    if(!error)
+      console.log(stdout);
+    else{
+      console.log('|---------------- Error Running Test --------------------|');
+      console.log(stdout);      
+
+      console.log('|---------------- Stack Trace ---------------------------|');
+      console.log(error)
+    }
+    
+  });
 });
 
 gulp.task('traspile-pub-scripts', function() {
