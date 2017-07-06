@@ -21,14 +21,16 @@ gulp.task('clean', function(cb){
 
 gulp.task('run-test', function() {
   exec('npm test', function(error, stdout, stderr) {
-    if(!error)
+    if(!error){
       console.log(stdout);
-    else{
+    } else {
       console.log('|---------------- Error Running Test --------------------|');
       console.log(stdout);      
 
       console.log('|---------------- Stack Trace ---------------------------|');
-      console.log(error)
+      console.log(error);
+
+      exec('open coverage/lcov-report/index.html');
     }
     
   });

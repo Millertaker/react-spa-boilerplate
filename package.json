@@ -4,7 +4,8 @@
   "description": "React basic boilerplate to create SPA",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ./test/mocks/setup.js ./test/**/*.test.js",
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ./test/mocks/setup.js ./test/**/*.test.js",
+    "coverage": "open coverage/lcov-report/index.html",
     "serve": "NODE_ENV=development ./node_modules/.bin/gulp",
     "bundle": "NODE_ENV=production ./node_modules/.bin/gulp",
     "transpile-dev": "./node_modules/.bin/webpack --env.development",
@@ -28,6 +29,7 @@
     "jsdom": "^11.0.0",
     "mocha": "^3.4.2",
     "mocha-loader": "^1.1.1",
+    "nyc": "^11.0.3",
     "react-addons-test-utils": "^15.6.0",
     "require-dir": "^0.3.2",
     "rimraf": "^2.6.1",
@@ -39,5 +41,16 @@
     "bootstrap": "^3.3.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "branches": 70,
+    "functions": 70,
+    "lines": 70,
+    "statements": 70,
+    "reporter": [
+      "text",
+      "lcov"
+    ]
   }
 }
