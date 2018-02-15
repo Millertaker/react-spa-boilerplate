@@ -5,3 +5,17 @@ public/js
 .nyc_output
 coverage
 
+#new
+
+#folders to be ignored in git
+node_modules
+credentials.js
+*~
+.DS_STORE
+devserv/css/allmin.css
+devserv/js/app.min.js
+build
+coverage
+reports
+logs
+.nyc_output
