@@ -1,49 +1,63 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////
-// Dev gulp pipeline
+// Required files
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
 var gulp = require('gulp');
-var exec = require('child_process').exec;
+var shell = require('gulp-shell');
 var rimraf = require('rimraf');
-var webserver = require('gulp-webserver');
-var run = require('run-sequence');
 
+var concat = require('gulp-concat');
+var run = require('run-sequence');
+var watch = require('gulp-watch');
 var uglifycss = require('gulp-uglifycss');
 var less = require('gulp-less');
 var plumber = require('gulp-plumber');
-var concat = require('gulp-concat');
 
-var webpackConfigDev = require('../webpack.config.js');
+var webpack = require('webpack-stream');
+var webpackConfig = require('./webpack.config.js');
+var webpackConfigApp = require('./webpack.config.dev.js');
 
-gulp.task('clean', function(cb){
-  rimraf('./public/js', cb);
+var webserver = require('gulp-webserver');
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// FE task
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+gulp.task('devsrv-scripts', function() {
+  return gulp.src('./public/devsrv/index.js')
+    .pipe(webpack(webpackConfigApp), function(err, stats){
+      /* err always null */
+      console.log(err);
+    })
+    .pipe(gulp.dest('./devsrv/js'));
 });
 
-gulp.task('clean-css', function(cb){
-  rimraf('./public/css', cb);
-});
+gulp.task('bundle-devsrv', function(){
+  return run('devsrv-scripts');
+})
 
-gulp.task('traspile-dev-scripts', function() {
-  exec('npm run transpile-dev');
+
+gulp.task('less', function(){
+  gulp.src('./src/less/**/*.less')
+    .pipe(plumber())
+    .pipe(concat('allmin.css'))
+    .pipe(less())
+    .pipe(gulp.dest('./devsrv/css'));
 });
 
 gulp.task('watch-fe', function(){
-  gulp.watch('./src/**/*.js', ['clean','traspile-dev-scripts']);
-  gulp.watch('./less/**/*.less', ['clean-css', 'less']);
-});
-
-gulp.task('less', function(){
-  gulp.src('./less/**/*.less')
-    .pipe(plumber())
-    .pipe(concat('main.css'))
-    .pipe(less())
-    .pipe(gulp.dest('./public/css'))
+  gulp.watch('./src/js/**/*.js', ['bundle-devsrv']);
+  gulp.watch('./src/devsrv/**/*.js', ['bundle-devsrv']);
+  gulp.watch('./src/less/**/*.less', function(){
+    gulp.start('less');
+  });
 });
 
 gulp.task('webserver', function() {
-  gulp.src('./public/')
+  gulp.src('./devsrv/')
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
@@ -52,5 +66,5 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('development', function(cb){
-  run('clean', 'clean-css', 'less', 'watch-fe', 'traspile-dev-scripts', 'webserver', cb);
+  run('watch-fe', 'less', 'bundle-devsrv', 'webserver', cb);
 });

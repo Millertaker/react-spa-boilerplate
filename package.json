@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ./test/mocks/setup.js ./test/**/*.test.js",
     "coverage": "open coverage/lcov-report/index.html",
-    "serve": "NODE_ENV=development ./node_modules/.bin/gulp",
+    "devsrv": "NODE_ENV=development ./node_modules/.bin/gulp",
     "bundle": "NODE_ENV=production ./node_modules/.bin/gulp",
     "transpile-dev": "./node_modules/.bin/webpack --env.development",
     "transpile-pub": "./node_modules/.bin/webpack --env.production"
@@ -24,7 +24,9 @@
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.3.2",
     "gulp-plumber": "^1.1.0",
+    "gulp-shell": "^0.6.5",
     "gulp-uglifycss": "^1.0.8",
+    "gulp-watch": "^5.0.0",
     "gulp-webserver": "^0.9.1",
     "jsdom": "^11.0.0",
     "mocha": "^3.4.2",
@@ -35,7 +37,8 @@
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.0.0"
+    "webpack": "^3.0.0",
+    "webpack-stream": "^4.0.1"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
