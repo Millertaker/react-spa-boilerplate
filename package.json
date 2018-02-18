@@ -4,12 +4,9 @@
   "description": "React basic boilerplate to create SPA",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --require ./test/mocks/setup.js ./test/**/*.test.js",
-    "coverage": "open coverage/lcov-report/index.html",
-    "devsrv": "NODE_ENV=development ./node_modules/.bin/gulp",
-    "bundle": "NODE_ENV=production ./node_modules/.bin/gulp",
-    "transpile-dev": "./node_modules/.bin/webpack --env.development",
-    "transpile-pub": "./node_modules/.bin/webpack --env.production"
+    "test": "./node_modules/.bin/gulp test",
+    "build-app": "./node_modules/.bin/gulp bundle",
+    "devsrv": "./node_modules/.bin/gulp"
   },
   "author": "Miller Gonzalez",
   "license": "ISC",
