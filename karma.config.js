@@ -1,7 +1,4 @@
 var webpackConfig = require('./gulp/webapack.config.test.js');
-const path = require('path');
-
-console.log(path.resolve(__dirname, ''))
 
 module.exports = function(config) {
   config.set({
@@ -12,12 +9,13 @@ module.exports = function(config) {
     ],
 
     // frameworks to use
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'chai'],
 
     preprocessors: {
       // only specify one entry point
       // and require all tests in there
-      './test/app.test.js': ['webpack', 'sourcemap']
+      './test/app.test.js': ['webpack'],
+      './src/js/**/*.js': ['webpack','coverage']
     },
 
     reporters: ['spec', 'coverage'],
